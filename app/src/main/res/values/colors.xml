@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#5568d4</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="transperant_blue">#ecf5fa</color>
+    <color name="transperant_turquoise">#e1f3ea</color>
+    <color name="green">#77b873</color>
+    <color name="transperent_green">#f5fcf2</color>
+    <color name="top_1">#d3f2c5</color>
+    <color name="top_2">#bff0a9</color>
+    <color name="top_3">#dff1b4</color>
+    <color name="top_4">#d7ef9f</color>
+    <color name="top_5">#c9e9a8</color>
+    <color name="top_6">#e1f7ba</color>
+    <color name="top_7">#b3fad2</color>
+    <color name="top_8">#91f8b1</color>
+    <color name="top_9">#dafba6</color>
+    <color name="top_10">#7ef88a</color>
+    <color name="light_blue">#caeaf8</color>
+</resources>

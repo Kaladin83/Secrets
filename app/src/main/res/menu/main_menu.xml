@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/account"
+        android:title="My Account"
+        android:icon="@mipmap/ic_account_circle_black_24dp"
+        app:showAsAction="never"/>
+    <item
+        android:id="@+id/settings"
+        android:title="Settings"
+        android:icon="@mipmap/ic_settings_black_18dp"
+        app:showAsAction="collapseActionView"/>
+
+    <item
+        android:id="@+id/logout"
+        android:title="Log out"
+        android:icon="@mipmap/ic_power_settings_new_black_24dp"
+        app:showAsAction="never"/>
+</menu>

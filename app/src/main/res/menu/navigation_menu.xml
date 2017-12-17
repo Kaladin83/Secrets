@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/top_data"
+        android:title="Top Thoughts and Secrets"
+        android:icon="@drawable/badge"/>
+    <item android:id="@+id/new_secret"
+        android:title="Share a secret"
+        android:icon="@mipmap/talking"/>
+    <item android:id="@+id/see_secret"
+        android:title="See all secrets"
+        android:icon="@mipmap/open_book"/>
+    <item android:id="@+id/new_thought"
+        android:title="Share your thoughts"
+        android:icon="@mipmap/talking"/>
+    <item android:id="@+id/see_thoughts"
+        android:title="See all thoughts"
+        android:icon="@mipmap/open_book"/>
+</menu>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/my_action_bar"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/green"
+    android:orientation="vertical"
+    android:textAlignment="center"
+
+    android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+    app:menu="@menu/main_menu"
+    app:subtitleTextColor="@android:color/background_light"
+    app:title="@string/app_name"
+    app:titleTextColor="@android:color/background_light"></android.support.v7.widget.Toolbar>
