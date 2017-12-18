@@ -15,7 +15,7 @@ import android.widget.TextView;
  * Created by MARATBE on 12/14/2017.
  */
 
-public class AddSecret extends NavigationPanel
+public class AddSecret extends NavigationPanel implements Constants
 {
     private TextView titleTxt;
     private RelativeLayout rLayout;
@@ -31,8 +31,8 @@ public class AddSecret extends NavigationPanel
     {
         titleTxt = new TextView(this);
         titleTxt.setText("Add your secret");;
-        titleTxt.setTextSize(20);
-        titleTxt.setTextColor(Color.BLUE);
+        titleTxt.setTextSize(TITLE_SIZE);
+        titleTxt.setTextColor(TITLE_COLOR);
         titleTxt.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
         titleTxt.setPadding(0,40,0,0);
         RelativeLayout.LayoutParams lp = new RelativeLayout.LayoutParams(

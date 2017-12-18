@@ -48,8 +48,8 @@ public class MainActivity extends NavigationPanel implements Constants
         DisplayMetrics displayMetrics = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
 
-        titleHeight = ((NavigationPanel.getScreenHeight() - 70) / 2)/15;
-        scrollHeight = ((NavigationPanel.getScreenHeight() - 70) / 2) - (titleHeight*5);
+        titleHeight = ((NavigationPanel.getScreenHeight() - 70) / 2)/8;
+        scrollHeight = ((NavigationPanel.getScreenHeight() - 70) / 2) - (int)(titleHeight*3);
         Log.d("Log", "Activity Width: " +  NavigationPanel.getScreenWidth());
         setFields();
     }
@@ -60,14 +60,14 @@ public class MainActivity extends NavigationPanel implements Constants
     {
         rLayout = (RelativeLayout) findViewById(R.id.main_relative_layout);
 
-        setRules(getToolbar().getId(),RelativeLayout.CENTER_HORIZONTAL, RelativeLayout.BELOW);
-        createTitle("Top Secrets", SECRET_TXT, lp);
-        setRules(SECRET_TXT, RelativeLayout.CENTER_HORIZONTAL, RelativeLayout.BELOW);
-        createScrollView(SECRET_SCROLL);
-        setRules(secretSV.getId(), RelativeLayout.CENTER_HORIZONTAL, RelativeLayout.BELOW);
-        createTitle("Top Thoughts", THOUGHTS_TXT, lp);
-        setRules(thoughtTxt.getId(), RelativeLayout.CENTER_HORIZONTAL, RelativeLayout.BELOW);
-        createScrollView(THOUGHTS_SCROLL);
+        setRules(getToolbar().getId(),RelativeLayout.CENTER_HORIZONTAL, RelativeLayout.BELOW, (int)(titleHeight*1.25));
+        createTitle("Top Secrets", ID_SECRET_TXT, lp);
+        setRules(ID_SECRET_TXT, RelativeLayout.CENTER_HORIZONTAL, RelativeLayout.BELOW, scrollHeight);
+        createScrollView(ID_SECRET_SCROLL);
+        setRules(secretSV.getId(), RelativeLayout.CENTER_HORIZONTAL, RelativeLayout.BELOW, (int)(titleHeight*1.25));
+        createTitle("Top Thoughts", ID_THOUGHTS_TXT, lp);
+        setRules(thoughtTxt.getId(), RelativeLayout.CENTER_HORIZONTAL, RelativeLayout.BELOW, scrollHeight);
+        createScrollView(ID_THOUGHTS_SCROLL);
         //setRules(thoughtsSV.getId(), RelativeLayout.CENTER_HORIZONTAL, RelativeLayout.BELOW, true);
     }
 
@@ -90,9 +90,9 @@ public class MainActivity extends NavigationPanel implements Constants
                    600, RelativeLayout.LayoutParams.MATCH_PARENT);
             button = new Button(this);
             button.setText("screen Height " + getScreenHeight()+ "\nnew title Height " + titleHeight+ "\nnew scroll Height " + scrollHeight+ "\ntext size in PT" + secretTxt.getTextSize() + "\ntext size " + (secretTxt.getTextSize()+ secretTxt.getTextSize()*0.25) + "\nlinscrollview size" + linscrollview.getMeasuredHeight()+ "\n");
-            button.setTextSize(14);
-
-            button.setTextColor(Color.BLACK);
+            button.setTextSize(TEXT_SIZE);
+            button.setTextColor(TEXT_COLOR);
+            button.setAllCaps(false);
             button.setTextAlignment(View.TEXT_ALIGNMENT_TEXT_START);
             button.setBackground(createBorder());
             button.setGravity(Gravity.CENTER);
@@ -132,11 +132,11 @@ public class MainActivity extends NavigationPanel implements Constants
         return getRandomColor(rand.nextInt(10));
     }
 
-    public void setRules(int id_, int rule1, int rule2)
+    public void setRules(int id_, int rule1, int rule2, int height)
     {
         lp = new RelativeLayout.LayoutParams(
                 RelativeLayout.LayoutParams.MATCH_PARENT,
-                RelativeLayout.LayoutParams.WRAP_CONTENT);
+                height);
         lp.addRule(rule1);
         lp.addRule(rule2, id_);
     }
@@ -145,8 +145,8 @@ public class MainActivity extends NavigationPanel implements Constants
     {
         TextView txtView = new TextView(this);
         txtView.setText(txt);
-        txtView.setTextSize((int)(titleHeight/3));
-        txtView.setTextColor(Color.BLUE);
+        txtView.setTextSize(TITLE_SIZE);
+        txtView.setTextColor(TITLE_COLOR);
         txtView.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
         //txtView.setBackgroundColor(Color.argb(250,240,200,70));
         txtView.setPadding(0,40,0,0);
@@ -159,11 +159,11 @@ public class MainActivity extends NavigationPanel implements Constants
     {
         switch (id)
         {
-            case SECRET_TXT:
+            case ID_SECRET_TXT:
                 secretTxt = (TextView) obj;    break;
-            case THOUGHTS_TXT:
+            case ID_THOUGHTS_TXT:
                 thoughtTxt = (TextView) obj;   break;
-            case SECRET_SCROLL:
+            case ID_SECRET_SCROLL:
                 secretSV = (HorizontalScrollView) obj;   break;
             default:
                 thoughtsSV = (HorizontalScrollView) obj; break;
