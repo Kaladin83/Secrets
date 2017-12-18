@@ -19,13 +19,11 @@ public interface Constants
     public final int ID_SHARE_BTN = 9;
     public final int ID_PUT_LIKE_BTN = 10;
     public final int ID_PUT_COMMENT_BTN = 11;
-    public final int ID_EMPTY_VIEW = 12;
-    public final int ID_ITEM_TXT = 13;
-    public final int ID_TAG_LAYOUT = 14;
-    public final int ID_STATUS_LAYOUT = 15;
-    public final int ID_ADD_COMMENT_EDIT = 16;
-    public final int ID_EDIT_LAYOUT = 17;
-    public final int ID_SEND_COMMENT_BTN = 18;
+    public final int ID_ITEM_TXT = 12;
+    public final int ID_TAG_LAYOUT = 13;
+    public final int ID_STATUS_LAYOUT = 14;
+    public final int ID_ADD_COMMENT_EDIT = 15;
+    public final int ID_SEND_COMMENT_BTN = 16;
 
     public final int TEXT_SIZE = 16;
     public final int TITLE_SIZE = 24;

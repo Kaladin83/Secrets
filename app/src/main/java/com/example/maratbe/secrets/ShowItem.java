@@ -39,7 +39,7 @@ public class ShowItem extends Dialog implements View.OnClickListener, View.OnTou
     private int buttonWidth, buttonHeight;
     private static int numOfEnterClicked = 1;
 
-    public Activity activity;
+    private Activity activity;
 
     public ShowItem() {
         super(null);
@@ -69,6 +69,7 @@ public class ShowItem extends Dialog implements View.OnClickListener, View.OnTou
 
     private void setTagsLayout()
     {
+        String txt;
         setRules(-100, RelativeLayout.CENTER_HORIZONTAL, mainLayout.getLayoutParams().width, buttonHeight);
         LinearLayout tagLayout = new LinearLayout(getContext());
         tagLayout.setOrientation(LinearLayout.HORIZONTAL);
@@ -76,10 +77,16 @@ public class ShowItem extends Dialog implements View.OnClickListener, View.OnTou
         tagLayout.setGravity(Gravity.CENTER);
         for (int i = 0; i < 3; i++)
         {
+            txt = "Tag "+(i+1);
             Button btn = new Button(getContext());
-            btn.setText("Tag "+(i+1));
-            btn.setPadding(10,10,10,10);
-            btn.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,ViewGroup.LayoutParams.WRAP_CONTENT));
+            btn.setText(txt);
+            btn.setBackground(createBorder(ContextCompat.getColor(getContext(),R.color.transperent_green), 20));
+            btn.setPadding(0,0,0,0);
+            btn.setAllCaps(false);
+            RelativeLayout.LayoutParams p = new RelativeLayout.LayoutParams(txt.length()*TEXT_SIZE*2,(int)(buttonHeight*0.7));
+            p.setMargins(10,0,10,10);
+            btn.setLayoutParams(p);
+
             tagLayout.addView(btn);
         }
 
@@ -104,9 +111,9 @@ public class ShowItem extends Dialog implements View.OnClickListener, View.OnTou
         mainLayout.requestFocus();
     }
 
-    public void setStatusLayout()
+    private void setStatusLayout()
     {
-        Toast.makeText(this.getContext(),"new secret = " +buttonWidth, Toast.LENGTH_SHORT).show();
+       // Toast.makeText(this.getContext(),"new secret = " +buttonWidth, Toast.LENGTH_SHORT).show();
         setRules(ID_ITEM_TXT, RelativeLayout.BELOW, mainLayout.getLayoutParams().width, (int)(buttonHeight*1.7));
         statusLayout = new RelativeLayout(getContext());
         statusLayout.setPadding(20,30,20,10);
@@ -121,30 +128,28 @@ public class ShowItem extends Dialog implements View.OnClickListener, View.OnTou
         likeBtn.setOnClickListener(this);
         statusLayout.addView(likeBtn, params);
 
-        setRules(ID_LIKE_BTN , RelativeLayout.RIGHT_OF, (int) (buttonWidth*1.25), buttonHeight);
+        String txt = "9";
+        setRules(ID_LIKE_BTN , RelativeLayout.RIGHT_OF, txt.length()*TEXT_SIZE*2, buttonHeight);
         numOfLikesTxt = new TextView(getContext());
         numOfLikesTxt.setId(ID_NUM_OF_LIKES_TXT);
-        numOfLikesTxt.setText("136K");
+        numOfLikesTxt.setText(txt);
         numOfLikesTxt.setTextSize(TEXT_SIZE);
         numOfLikesTxt.setTextColor(Color.BLACK);
         numOfLikesTxt.setBackground(createBorder(ContextCompat.getColor(getContext(),R.color.transperent_green), 0));
         statusLayout.addView(numOfLikesTxt, params);
 
-        setRules(ID_NUM_OF_LIKES_TXT , RelativeLayout.RIGHT_OF, (int) (buttonWidth * 0.5), buttonHeight);
-        View emptyView = new View(getContext());
-        emptyView.setId(ID_EMPTY_VIEW);
-        statusLayout.addView(emptyView, params);
-
-        setRules(ID_EMPTY_VIEW , RelativeLayout.RIGHT_OF, buttonWidth, buttonHeight);
+        setRules(ID_NUM_OF_LIKES_TXT , RelativeLayout.RIGHT_OF, buttonWidth, buttonHeight);
         commentsBtn = new Button(getContext());
         commentsBtn.setBackgroundResource(R.drawable.comments2);
         commentsBtn.setId(ID_COMMENTS_BTN);
         commentsBtn.setOnClickListener(this);
+        params.setMargins(10,0,0,0);
         statusLayout.addView(commentsBtn, params);
 
-        setRules(ID_COMMENTS_BTN , RelativeLayout.RIGHT_OF, (int) (buttonWidth*1.25), buttonHeight);
+        txt = "91";
+        setRules(ID_COMMENTS_BTN , RelativeLayout.RIGHT_OF, txt.length()*TEXT_SIZE*2, buttonHeight);
         numOfCommentsTxt = new TextView(getContext());
-        numOfCommentsTxt.setText("166");
+        numOfCommentsTxt.setText(txt);
         numOfCommentsTxt.setTextSize(TEXT_SIZE);
         numOfCommentsTxt.setTextColor(Color.BLACK);
         numOfCommentsTxt.setId(ID_NUM_OF_COMMENTS_TXT);
@@ -152,20 +157,22 @@ public class ShowItem extends Dialog implements View.OnClickListener, View.OnTou
         statusLayout.addView(numOfCommentsTxt, params);
 
         setRules(-100, RelativeLayout.ALIGN_PARENT_RIGHT, buttonWidth, buttonHeight);
-        commentBtn = new Button(getContext());
-        commentBtn.setId(ID_PUT_COMMENT_BTN);
-        commentBtn.setOnClickListener(this);
-        commentBtn.setBackgroundResource(R.drawable.add_comment);
-        statusLayout.addView(commentBtn, params);
-
-        setRules(ID_PUT_COMMENT_BTN , RelativeLayout.LEFT_OF, buttonWidth, buttonHeight);
         shareBtn = new Button(getContext());
         shareBtn.setId(ID_SHARE_BTN);
         shareBtn.setOnClickListener(this);
         shareBtn.setBackgroundResource(R.drawable.share);
+        params.setMargins(10,0,0,0);
         statusLayout.addView(shareBtn, params);
 
         setRules(ID_SHARE_BTN , RelativeLayout.LEFT_OF, buttonWidth, buttonHeight);
+        commentBtn = new Button(getContext());
+        commentBtn.setId(ID_PUT_COMMENT_BTN);
+        commentBtn.setOnClickListener(this);
+        commentBtn.setBackgroundResource(R.drawable.add_comment);
+        params.setMargins(10,0,0,0);
+        statusLayout.addView(commentBtn, params);
+
+        setRules(ID_PUT_COMMENT_BTN , RelativeLayout.LEFT_OF, buttonWidth, buttonHeight);
         putLikeBtn = new Button(getContext());
         putLikeBtn.setId(ID_PUT_LIKE_BTN);
         putLikeBtn.setOnClickListener(this);
@@ -210,7 +217,6 @@ public class ShowItem extends Dialog implements View.OnClickListener, View.OnTou
         editLayout.addView(addCommentEdit, params);
         editLayout.invalidate();
 
-       // m.showSoftInput(addCommentEdit, InputMethodManager.RESULT_UNCHANGED_HIDDEN);
         setRules(ID_ADD_COMMENT_EDIT, RelativeLayout.RIGHT_OF, (int) (mainLayout.getLayoutParams().width * 0.15),(int)(buttonHeight*1.25));
         sendCommentBtn = new Button(getContext());
         sendCommentBtn.setId(ID_SEND_COMMENT_BTN);
@@ -222,7 +228,7 @@ public class ShowItem extends Dialog implements View.OnClickListener, View.OnTou
         mainLayout.addView(editLayout,params);
     }
 
-    public void setRules(int id_, int rule, int width, int hight)
+    private void setRules(int id_, int rule, int width, int hight)
     {
         params = new RelativeLayout.LayoutParams(width, hight);
         if (id_ != -100)
@@ -232,27 +238,6 @@ public class ShowItem extends Dialog implements View.OnClickListener, View.OnTou
         else
         {
             params.addRule(rule);
-        }
-    }
-
-    public void setupUI(View view) {
-
-        // Set up touch listener for non-text box views to hide keyboard.
-        if (!(view instanceof EditText)) {
-            view.setOnTouchListener(new View.OnTouchListener() {
-                public boolean onTouch(View v, MotionEvent event) {
-                    hideSoftKeyboard(activity);
-                    return false;
-                }
-            });
-        }
-
-        //If a layout container, iterate over children and seed recursion.
-        if (view instanceof ViewGroup) {
-            for (int i = 0; i < ((ViewGroup) view).getChildCount(); i++) {
-                View innerView = ((ViewGroup) view).getChildAt(i);
-                setupUI(innerView);
-            }
         }
     }
 
@@ -266,15 +251,6 @@ public class ShowItem extends Dialog implements View.OnClickListener, View.OnTou
             gd.setStroke(1, Color.DKGRAY);
         }
         return gd;
-    }
-
-    public static void hideSoftKeyboard(Activity activity)
-    {
-        InputMethodManager inputMethodManager =
-                (InputMethodManager) activity.getSystemService(
-                        Activity.INPUT_METHOD_SERVICE);
-        inputMethodManager.hideSoftInputFromWindow(
-                activity.getCurrentFocus().getWindowToken(), 0);
     }
 
     @Override

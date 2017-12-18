@@ -151,7 +151,7 @@ public class NavigationPanel extends AppCompatActivity
             switch (item.getItemId())
             {
                 case R.id.account:
-                    Intent intent = new Intent(this, MyAccount.class);
+                    Intent intent = new Intent(NavigationPanel.this, MyAccount.class);
                     startActivity(intent);
                     // call view account
                     Toast.makeText(this, "view account", Toast.LENGTH_SHORT).show();
