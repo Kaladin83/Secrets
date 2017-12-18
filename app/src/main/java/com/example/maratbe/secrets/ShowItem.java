@@ -77,7 +77,7 @@ public class ShowItem extends Dialog implements View.OnClickListener, View.OnTou
         tagLayout.setGravity(Gravity.CENTER);
         for (int i = 0; i < 3; i++)
         {
-            txt = "Tag "+(i+1);
+            txt = "Tag #"+(i+1);
             Button btn = new Button(getContext());
             btn.setText(txt);
             btn.setBackground(createBorder(ContextCompat.getColor(getContext(),R.color.transperent_green), 20));
