@@ -38,16 +38,18 @@ public class ShowItem extends Dialog implements View.OnClickListener, View.OnTou
     private RelativeLayout mainLayout, statusLayout, editLayout ;
     private int buttonWidth, buttonHeight;
     private static int numOfEnterClicked = 1;
+    private Item passedItem;
 
     private Activity activity;
 
     public ShowItem() {
         super(null);
     }
-    public ShowItem(Activity activity) {
+
+    public ShowItem(Activity activity, Item item) {
         super(activity);
         this.activity = activity;
-
+        passedItem = item;
     }
 
     @Override
@@ -77,17 +79,20 @@ public class ShowItem extends Dialog implements View.OnClickListener, View.OnTou
         tagLayout.setGravity(Gravity.CENTER);
         for (int i = 0; i < 3; i++)
         {
-            txt = "Tag #"+(i+1);
-            Button btn = new Button(getContext());
-            btn.setText(txt);
-            btn.setBackground(createBorder(ContextCompat.getColor(getContext(),R.color.transperent_green), 20));
-            btn.setPadding(0,0,0,0);
-            btn.setAllCaps(false);
-            RelativeLayout.LayoutParams p = new RelativeLayout.LayoutParams(txt.length()*TEXT_SIZE*2,(int)(buttonHeight*0.7));
-            p.setMargins(10,0,10,10);
-            btn.setLayoutParams(p);
+            if (passedItem.getArrayOfTags()[i] != null)
+            {
+                txt = passedItem.getArrayOfTags()[i];
+                Button btn = new Button(getContext());
+                btn.setText(txt);
+                btn.setBackground(createBorder(ContextCompat.getColor(getContext(),R.color.transperent_green), 20));
+                btn.setPadding(0,0,0,0);
+                btn.setAllCaps(false);
+                RelativeLayout.LayoutParams p = new RelativeLayout.LayoutParams(txt.length()*TEXT_SIZE*2,(int)(buttonHeight*0.7));
+                p.setMargins(10,0,10,10);
+                btn.setLayoutParams(p);
 
-            tagLayout.addView(btn);
+                tagLayout.addView(btn);
+            }
         }
 
         mainLayout.addView(tagLayout,params);
@@ -103,7 +108,7 @@ public class ShowItem extends Dialog implements View.OnClickListener, View.OnTou
         itemVeiw.setTextSize(TEXT_SIZE);
         itemVeiw.setPadding(40,20,40,20);
         itemVeiw.setMovementMethod(new ScrollingMovementMethod());
-        itemVeiw.setText("bla bla bla\nIt's going to be a great app\ntrust me!!!\nbla bla\nbli bli\nwhat's up\nwho am I?\nI'm a goose\nNot realy...\nwhen I'll stop?\nstop already!!\ngood lord!\nbla bla bla again");
+        itemVeiw.setText(passedItem.getText());
         mainLayout.setPadding(0,50,0,0);
         mainLayout.setBackground(createBorder(ContextCompat.getColor(getContext(),R.color.top_1), 1));
         mainLayout.addView(itemVeiw, params);
@@ -128,7 +133,7 @@ public class ShowItem extends Dialog implements View.OnClickListener, View.OnTou
         likeBtn.setOnClickListener(this);
         statusLayout.addView(likeBtn, params);
 
-        String txt = "9";
+        String txt = passedItem.getNumOfLikes()+"";
         setRules(ID_LIKE_BTN , RelativeLayout.RIGHT_OF, txt.length()*TEXT_SIZE*2, buttonHeight);
         numOfLikesTxt = new TextView(getContext());
         numOfLikesTxt.setId(ID_NUM_OF_LIKES_TXT);
@@ -146,7 +151,7 @@ public class ShowItem extends Dialog implements View.OnClickListener, View.OnTou
         params.setMargins(10,0,0,0);
         statusLayout.addView(commentsBtn, params);
 
-        txt = "91";
+        txt = passedItem.getNumOfComments()+"";
         setRules(ID_COMMENTS_BTN , RelativeLayout.RIGHT_OF, txt.length()*TEXT_SIZE*2, buttonHeight);
         numOfCommentsTxt = new TextView(getContext());
         numOfCommentsTxt.setText(txt);

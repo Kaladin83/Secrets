@@ -32,6 +32,7 @@ public class NavigationPanel extends AppCompatActivity
     private NavigationView  navigationView;
     private Toolbar mToolb;
     private ArrayList<Integer> arrayOfColors = new ArrayList<>();
+    private static ArrayList<Item> arrayOfItems = new ArrayList<>();
 
     public Toolbar getToolbar()
     {
@@ -46,6 +47,16 @@ public class NavigationPanel extends AppCompatActivity
     public static int getScreenHeight()
     {
         return screenHeight;
+    }
+
+    public static ArrayList<Item> getArrayOfItems()
+    {
+        return arrayOfItems;
+    }
+
+    public static void setArrayOfItems(Item item)
+    {
+        arrayOfItems.add(item);
     }
 
     public static int getScreenWidth()
