@@ -18,4 +18,12 @@
     <color name="top_9">#dafba6</color>
     <color name="top_10">#7ef88a</color>
     <color name="light_blue">#caeaf8</color>
+    <color name="light_blue_gradient">#FFECF5FA</color>
+    <color name="dark_blue_gradient">#FF90BEFB</color>
+    <color name="blue_active_bar">#FF86A7E1</color>
+    <color name="blue_status_bar">#FFADC8F4</color>
+    <color name="light_green_gradient">#f5fcf2</color>
+    <color name="dark_green_gradient">#FFA3DA8B</color>
+    <color name="green_active_Bar">#77b873</color>
+    <color name="green_status_bar">#c9e9a8</color>
 </resources>

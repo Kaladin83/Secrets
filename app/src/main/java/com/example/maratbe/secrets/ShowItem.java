@@ -8,6 +8,7 @@ import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
+import android.support.v4.graphics.drawable.DrawableCompat;
 import android.text.InputType;
 import android.text.method.ScrollingMovementMethod;
 import android.view.Gravity;
@@ -129,7 +130,7 @@ public class ShowItem extends Dialog implements View.OnClickListener, View.OnTou
         setRules(-100, RelativeLayout.ALIGN_LEFT, buttonWidth, buttonHeight);
         likeBtn = new Button(getContext());
         likeBtn.setId(ID_LIKE_BTN);
-        likeBtn.setBackgroundResource(R.drawable.heart);
+        likeBtn.setBackgroundResource(R.drawable.heart2);
         likeBtn.setOnClickListener(this);
         statusLayout.addView(likeBtn, params);
 
@@ -145,7 +146,7 @@ public class ShowItem extends Dialog implements View.OnClickListener, View.OnTou
 
         setRules(ID_NUM_OF_LIKES_TXT , RelativeLayout.RIGHT_OF, buttonWidth, buttonHeight);
         commentsBtn = new Button(getContext());
-        commentsBtn.setBackgroundResource(R.drawable.comments2);
+        commentsBtn.setBackgroundResource(R.drawable.comments3);
         commentsBtn.setId(ID_COMMENTS_BTN);
         commentsBtn.setOnClickListener(this);
         params.setMargins(10,0,0,0);
@@ -165,7 +166,9 @@ public class ShowItem extends Dialog implements View.OnClickListener, View.OnTou
         shareBtn = new Button(getContext());
         shareBtn.setId(ID_SHARE_BTN);
         shareBtn.setOnClickListener(this);
-        shareBtn.setBackgroundResource(R.drawable.share);
+
+       // shareBtn.setG
+       // shareBtn = (ImageView) findViewById(R.id.imageview);
         params.setMargins(10,0,0,0);
         statusLayout.addView(shareBtn, params);
 

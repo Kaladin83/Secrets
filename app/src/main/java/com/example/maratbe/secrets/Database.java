@@ -103,7 +103,7 @@ public class Database  {
 
     public int selectTopTenData()
     {
-        int returnCode = 0;
+        int returnCode;
         query = new StringBuffer();
 
         createSelectTopTenQuery();
@@ -114,7 +114,7 @@ public class Database  {
 
     public int selectTagsData(Item item)
     {
-        int returnCode = 0;
+        int returnCode;
         query = new StringBuffer();
 
         createSelectTagsQuery(item);
@@ -125,7 +125,7 @@ public class Database  {
 
     private int selectstatisticsData(Item item)
     {
-        int returnCode = 0;
+        int returnCode;
         query = new StringBuffer();
 
         createSelectStatisticsQuery(item);
@@ -252,7 +252,6 @@ public class Database  {
             }catch (SQLException se)
             {
                 Log.e("ERROR", "The Fetch action did not succeed.\nThe reason is: " +se.getErrorCode()+": "+se.getMessage());
-                rc =  -1;
             }
             rc = -1;
         }
@@ -261,7 +260,7 @@ public class Database  {
 
     private int fetchData(String whatToQuery)
     {
-        int rc = 0;
+        int rc;
 
         try
         {
@@ -287,7 +286,6 @@ public class Database  {
             }catch (SQLException se)
             {
                 Log.e("ERROR", "The Fetch action did not succeed.\nThe reason is: " +se.getErrorCode()+": "+se.getMessage());
-                rc =  -1;
             }
             rc = -1;
         }
@@ -309,7 +307,7 @@ public class Database  {
 
     private int fetchData(String whatToQuery, Item item)
     {
-        int rc = 0;
+        int rc;
 
         try
         {
@@ -335,7 +333,6 @@ public class Database  {
             }catch (SQLException se)
             {
                 Log.e("ERROR", "The Fetch action did not succeed.\nThe reason is: " +se.getErrorCode()+": "+se.getMessage());
-                rc =  -1;
             }
             rc = -1;
         }
@@ -382,9 +379,9 @@ public class Database  {
 
     private int fetchTopTenData(ResultSet rset) throws SQLException
     {
-        String user = "", text = "";
-        char type = ' ';
-        int itemId = 0, prevItemId = 0, date = 0, rating = 0, comments = 0, likes = 0, arrayInx = 0;
+        String user, text;
+        char type;
+        int itemId, prevItemId = 0, date, rating, comments, likes, arrayInx = 0;
         int rc = -1, index = 0;
         String[] tagsArray = new String[3];
         Item item = new Item();
@@ -499,6 +496,8 @@ public class Database  {
 
     public void insertIntoStatisticsBunch()
     {
+        query = new StringBuffer("delete from statistics;");
+        insertData(query);
         query = new StringBuffer("INSERT INTO statistics (item_id, likes, comments) VALUES(13, 21, 1)");
         insertData(query);
         query = new StringBuffer("INSERT INTO statistics (item_id, likes, comments) VALUES(1, 50, 2)");
@@ -549,8 +548,10 @@ public class Database  {
         insertData(query);
     }
 
-    public void insertIntoTagsBunch()
-    {
+    public void insertIntoTagsBunch(){
+        query = new StringBuffer("delete from tags_and_items;");
+        insertData(query);
+
         query = new StringBuffer("INSERT INTO tags_and_items (tag_name, tag_id, item_id) VALUES('fantasy', 1, 1)");
         insertData(query);
         query = new StringBuffer("INSERT INTO tags_and_items (tag_name, tag_id, item_id) VALUES('sports', 2, 1)");
@@ -635,9 +636,9 @@ public class Database  {
         insertData(query);
        query= new StringBuffer("INSERT INTO tags_and_items (tag_name, tag_id, item_id) VALUES('bike', 29, 21)");
         insertData(query);
-       query= new StringBuffer("INSERT INTO tags_and_items (tag_name, tag_id, item_id) VALUES('dream', 10, 20)");
+       query= new StringBuffer("INSERT INTO tags_and_items (tag_name, tag_id, item_id) VALUES('money', 25, 21)");
         insertData(query);
-       query= new StringBuffer("INSERT INTO tags_and_items (tag_name, tag_id, item_id) VALUES('sex', 7, 21)");
+       query= new StringBuffer("INSERT INTO tags_and_items (tag_name, tag_id, item_id) VALUES('sex', 7, 22)");
         insertData(query);
        query= new StringBuffer("INSERT INTO tags_and_items (tag_name, tag_id, item_id) VALUES('money', 25, 22)");
         insertData(query);

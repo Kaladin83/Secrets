@@ -1,6 +1,7 @@
 package com.example.maratbe.secrets;
 
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
 import android.support.v4.content.ContextCompat;
@@ -41,7 +42,7 @@ public class MainActivity extends NavigationPanel implements Constants, View.OnC
         objectWidth = 550;
         Database db = new Database();
         //db.insertIntoStatisticsBunch();
-        //db.insertIntoTagsBunch();
+        db.insertIntoTagsBunch();
         db.selectTopTenData();
         setFields();
     }
@@ -107,12 +108,13 @@ public class MainActivity extends NavigationPanel implements Constants, View.OnC
                     RelativeLayout.LayoutParams.MATCH_PARENT, scrollHeight - panelHeight - 60);
             button = new Button(this);
             button.setText(getArrayOfItems().get(i).getText());
-            button.setTextSize(TEXT_SIZE);
+            button.setTextSize(TEXT_SIZE+3);
             button.setTextColor(TEXT_COLOR);
             button.setBackground(objectRLayout.getBackground());
             button.setAllCaps(false);
             button.setTextAlignment(View.TEXT_ALIGNMENT_TEXT_START);
             button.setBackground(createBorder(objectRLayout.getDrawingCacheBackgroundColor(), 1, 0));
+            button.setTypeface(Typeface.createFromAsset(getAssets(),"Patty Sans.ttf"));
             button.setGravity(Gravity.CENTER);
             button.setOnClickListener(this);
 
@@ -151,9 +153,10 @@ public class MainActivity extends NavigationPanel implements Constants, View.OnC
 
     private Drawable createBorder(int radius)
     {
-        GradientDrawable gd = new GradientDrawable();
+        int[] colors = {ContextCompat.getColor(this, R.color.light_green_gradient),ContextCompat.getColor(this, R.color.dark_green_gradient)};
+        GradientDrawable gd = new GradientDrawable(GradientDrawable.Orientation.TOP_BOTTOM, colors);
         getRandomNUmber();
-        gd.setColor(getRandomNUmber()); // Changes this drawbale to use a single color instead of a gradient
+        //gd.setColor(getRandomNUmber()); // Changes this drawbale to use a single color instead of a gradient
         gd.setCornerRadius(radius);
         gd.setStroke(2, Color.DKGRAY);
         return gd;
@@ -204,6 +207,7 @@ public class MainActivity extends NavigationPanel implements Constants, View.OnC
         txtView.setTextSize(TITLE_SIZE);
         txtView.setTextColor(TITLE_COLOR);
         txtView.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+        txtView.setTypeface(Typeface.createFromAsset(getAssets(),"Xerox Serif Narrow Italic.ttf"));
         //txtView.setBackgroundColor(Color.argb(250,240,200,70));
         txtView.setPadding(0,40,0,0);
         txtView.setId(id);

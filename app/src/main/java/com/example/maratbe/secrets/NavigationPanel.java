@@ -68,7 +68,7 @@ public class NavigationPanel extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState)
     {
         loadColors();
-        getWindow().setStatusBarColor(ContextCompat.getColor(this,R.color.top_5));
+        getWindow().setStatusBarColor(ContextCompat.getColor(this,R.color.blue_status_bar));
         super.onCreate(savedInstanceState);
         setDimentions();
         switch (MainActivity.screen)
